@@ -3,9 +3,9 @@ entries:
   iofog:
   - apiVersion: v1
     appVersion: "1.0"
-    created: 2019-04-10T02:24:21.835660969Z
+    created: 2019-04-10T02:40:37.472197347Z
     description: A Helm chart for ioFog services
-    digest: e5847b39249ff9dd14bb2ed2c31f47299e2069cebfd80f324ba02644f286452d
+    digest: faafb0abd5cbf1c1c02f7f2f352dff34b832e19e3dffe2d01e9943f167e93921
     name: iofog
     urls:
     - https://eclipse-iofog.github.io/iofog-platform/iofog-0.1.0.tgz
@@ -13,11 +13,11 @@ entries:
   iofog-k8s:
   - apiVersion: v1
     appVersion: "1.0"
-    created: 2019-04-10T02:24:21.836084158Z
+    created: 2019-04-10T02:40:37.472462619Z
     description: A Helm chart for ioFog Kubernetes integration
-    digest: 13564b6a7debced8eff2481555cd8a25e66009f68fa8ab221e8b2572f40cdffe
+    digest: 779cf7664e38f92c6de9ad61f2bb6f09f1237f581e1732486f1f6ffd65b06d5c
     name: iofog-k8s
     urls:
     - https://eclipse-iofog.github.io/iofog-platform/iofog-k8s-0.1.0.tgz
     version: 0.1.0
-generated: 2019-04-10T02:24:21.834888873Z
+generated: 2019-04-10T02:40:37.471740493Z
