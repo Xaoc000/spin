@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
-NAME=$1
-IMAGE_NAME=$2
-IMAGE_TAG=$3
-USER_ID=$4
+USER_ID=$1
 
-iofog-controller catalog add  --name "${NAME}" --arm-image ${IMAGE_NAME}:${IMAGE_TAG} --registry-id 1 --user-id ${USER_ID} --category "some-category"
+iofog-controller catalog add  --name "BoulderAI" --arm-image edgeworx/boulderai:latest --registry-id 1 --user-id ${USER_ID} --category "some-category"
+
+iofog-controller catalog add  --name "WebService" --arm-image edgeworx/webservice:latest --registry-id 1 --user-id ${USER_ID} --category "some-category"
