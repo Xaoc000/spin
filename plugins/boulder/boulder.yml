@@ -6,16 +6,13 @@ metadata:
 spec:
   microservices:
     - name: "boulderAI"
-      catalog-item-id: 6
-      config: "{\"citycode\":\"5391997\",\"apikey\":\"6141811a6136148a00133488eadff0fb\",\"frequency\":1000}"
-      host-access: false
+      catalog-item-id:
+      config:
+      host-access: true
       routes:
         - "@1"
     - name: "webDisplay"
-      catalog-item-id: 7
-      config: "{\"buffersize\":3,\"contentdataencoding\":\"utf8\",\"contextdataencoding\":\"utf8\",\"outputfields\":{\"publisher\":\"source\",\"contentdata\":\"temperature\",\"timestamp\":\"time\"}}"
+      catalog-item-id:
+      config:
       host-access: false
-      ports:
-        - internal: 80
-          external: 5555
   replicas: 2
