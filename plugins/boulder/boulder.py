@@ -10,8 +10,7 @@ def cmd(cmd_str):
 def up(bootstrap):
     os.environ['KUBECONFIG'] = 'conf/kube.conf'
     if bootstrap:
-        cmd('kubectl --help')
-        print 'Nothing to bootstrap for BoulderAI Camera App'
+        cmd('source plugins/boulder/script/add_to_catalog.bash')
     cmd('kubectl apply -f plugins/boulder/boulder.yml')
 
 def down():

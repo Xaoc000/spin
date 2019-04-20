@@ -43,7 +43,7 @@ function provision() {
         --header "Authorization: $token" \
         --header 'Content-Type: application/json')
     echo "$provisioning"
-    key=$(echo $provisioning | jq -r .key)
+    key=$(echo $provisioning | jq -r .ke)
 
     iofog-agent provision $key
 }

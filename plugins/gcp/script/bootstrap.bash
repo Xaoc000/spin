@@ -16,4 +16,8 @@ curl -fSL -o terraform.zip https://releases.hashicorp.com/terraform/"$TERRAFORM_
 sudo mkdir -p /usr/local/opt/
 sudo unzip -q terraform.zip -d /usr/local/opt/terraform
 rm -f terraform.zip
-sudo ln -s /usr/local/opt/terraform/terraform /usr/local/bin/terraform
+if [[ -f "/usr/local/bin/terraform" ]]; then
+    echo "File Exists, Skipping Linking"
+else
+    sudo ln -s /usr/local/opt/terraform/terraform /usr/local/bin/terraform
+fi

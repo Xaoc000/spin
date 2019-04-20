@@ -6,13 +6,13 @@ metadata:
 spec:
   microservices:
     - name: "boulderAI"
-      catalog-item-id:
+      catalog-item-id: ${BOULDER}
       config:
       host-access: true
       routes:
         - "@1"
     - name: "webDisplay"
-      catalog-item-id:
+      catalog-item-id: ${WEB}
       config:
       host-access: false
   replicas: 2
