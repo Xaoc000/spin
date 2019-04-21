@@ -6,13 +6,11 @@ metadata:
 spec:
   microservices:
     - name: "boulderAI"
-      catalog-item-id: ${BOULDER}
-      config:
+      catalog-item-id: 101
+      volumes: /usr/:/usr/ /lib:/lib
       host-access: true
-      routes:
-        - "@1"
-    - name: "webDisplay"
-      catalog-item-id: ${WEB}
-      config:
+    - name: "webDisplayBoulder"
+      catalog-item-id: 102
+      volumes:
       host-access: false
   replicas: 2

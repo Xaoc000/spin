@@ -24,6 +24,7 @@ def up(**kwargs):
     # Default args
     args = {}
     args['bootstrap'] = False
+    args['boulder'] = False
 
     # Parse input args
     for key, val in kwargs.items():
@@ -31,6 +32,8 @@ def up(**kwargs):
 
     if args['bootstrap']:
         cmd('plugins/iofog/script/bootstrap.bash')
+    if args['boulder']:
+        cmd('plugins/boulder/script/keys.bash')
     cmd('plugins/iofog/script/deploy.bash')
 
 def down():
