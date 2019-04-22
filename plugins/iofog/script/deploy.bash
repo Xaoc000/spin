@@ -8,7 +8,7 @@ ANSIBLE=plugins/iofog/ansible
 export KUBECONFIG=conf/kube.conf
 
 # Wait for Kubernetes cluster
-"$SCRIPT"/wait-for-pods.bash kube-system
+#"$SCRIPT"/wait-for-pods.bash kube-system
 
 # Helm
 helm init --wait
