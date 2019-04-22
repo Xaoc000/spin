@@ -6,7 +6,7 @@ ANSIBLE=iofog/ansible/scripts
 function add() {
     add_boulder=$(curl -X POST \
                   http://${controller_ip}:51121/api/v3/catalog/microservices \
-                  -H 'Authorization: ${auth_token}' \
+                  -H 'Authorization: ${TOKEN}' \
                   -H 'Content-Type: application/json' \
                   -d '{
                   "name": "iofog-video",
@@ -26,11 +26,12 @@ function add() {
 
     add_web=$(curl -X POST \
                   http://${controller_ip}:51121/api/v3/catalog/microservices \
-                  -H 'Authorization: ${auth_token}' \
+                  -H 'Authorization: ${TOKEN}' \
                   -H 'Content-Type: application/json' \
                   -d '{
                   "name": "iofog-web",
                   "category": "some-category",
+                  "flow":
                   "images": [
                     {
                       "containerImage": "edgeworx/iofog-video-web:latest",
@@ -47,4 +48,31 @@ function add() {
 
 controller_ip=$("$SCRIPT"/wait-for-lb.bash iofog controller)
 "$SCRIPT"/wait-for-pods.bash kube-system
+
+# Get Auth Token
+#AUTH_RESULT=$(curl --request POST \
+#--url http://"${controller_ip}":51121/api/v3/user/login \
+#--header 'Content-Type: application/json' \
+#--data '{"email":"user@domain.com","password":"#Bugs4Fun"}')
+#echo "$AUTH_RESULT"
+
+AUTH_RESULT=$(curl -X POST \
+  http://35.189.46.191:51121/api/v3/user/login \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/json' \
+  -H 'postman-token: 42dc323d-6b73-5d43-577c-2c02028e35d2' \
+  -d '{
+  "email": "user@domain.com",
+  "password": "#Bugs4Fun"
+}')
+
+TOKEN=$(echo $AUTH_RESULT | jq -r .accessToken)
+
+FLOW=$(curl -X GET \
+  http://35.189.46.191:51121/api/v3/flow \
+  -H 'authorization: ${TOKEN}' \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/json' \
+  -H 'postman-token: 27a84411-e4d7-cf3b-7d21-4b0a2edb385d')
+
 add
