@@ -4,46 +4,45 @@ SCRIPT=plugins/iofog/script
 ANSIBLE=iofog/ansible/scripts
 
 function add() {
-    add_boulder=$(curl -X POST \
-                  http://${controller_ip}:51121/api/v3/catalog/microservices \
-                  -H 'Authorization: ${TOKEN}' \
-                  -H 'Content-Type: application/json' \
-                  -d '{
-                  "name": "iofog-video",
-                  "category": "some-category",
-                  "images": [
-                    {
-                      "containerImage": "edgeworx/iofog-video:latest",
-                      "fogTypeId": 1
-                    },
-                    {
-                      "containerImage": "edgeworx/iofog-video:latest",
-                      "fogTypeId": 2
-                    }
-                  ],
-                "registryId": 1
-                }')
+    curl -X POST \
+      http://${controller_ip}:51121/api/v3/catalog/microservices \
+      -H 'Authorization': ${TOKEN} \
+      -H 'Content-Type: application/json' \
+      -d '{
+      "name": "iofog-video",
+      "category": "some-category",
+      "images": [
+        {
+          "containerImage": "edgeworx/iofog-video:latest",
+          "fogTypeId": 1
+        },
+        {
+          "containerImage": "edgeworx/iofog-video:latest",
+          "fogTypeId": 2
+        }
+      ],
+    "registryId": 1
+    }'
 
-    add_web=$(curl -X POST \
-                  http://${controller_ip}:51121/api/v3/catalog/microservices \
-                  -H 'Authorization: ${TOKEN}' \
-                  -H 'Content-Type: application/json' \
-                  -d '{
-                  "name": "iofog-web",
-                  "category": "some-category",
-                  "flow":
-                  "images": [
-                    {
-                      "containerImage": "edgeworx/iofog-video-web:latest",
-                      "fogTypeId": 1
-                    },
-                    {
-                      "containerImage": "edgeworx/iofog-video-web:latest",
-                      "fogTypeId": 2
-                    }
-                  ],
-                "registryId": 1
-                }')
+    curl -X POST \
+      http://${controller_ip}:51121/api/v3/catalog/microservices \
+      -H 'Authorization': ${TOKEN} \
+      -H 'Content-Type: application/json' \
+      -d '{
+      "name": "iofog-web",
+      "category": "some-category",
+      "images": [
+        {
+          "containerImage": "edgeworx/iofog-video-web:latest",
+          "fogTypeId": 1
+        },
+        {
+          "containerImage": "edgeworx/iofog-video-web:latest",
+          "fogTypeId": 2
+        }
+      ],
+    "registryId": 1
+    }'
 }
 
 controller_ip=$("$SCRIPT"/wait-for-lb.bash iofog controller)
@@ -57,7 +56,7 @@ controller_ip=$("$SCRIPT"/wait-for-lb.bash iofog controller)
 #echo "$AUTH_RESULT"
 
 AUTH_RESULT=$(curl -X POST \
-  http://35.189.46.191:51121/api/v3/user/login \
+  http://${controller_ip}:51121/api/v3/user/login \
   -H 'cache-control: no-cache' \
   -H 'content-type: application/json' \
   -H 'postman-token: 42dc323d-6b73-5d43-577c-2c02028e35d2' \
@@ -66,13 +65,18 @@ AUTH_RESULT=$(curl -X POST \
   "password": "#Bugs4Fun"
 }')
 
+echo $AUTH_RESULT
+
 TOKEN=$(echo $AUTH_RESULT | jq -r .accessToken)
 
 FLOW=$(curl -X GET \
-  http://35.189.46.191:51121/api/v3/flow \
-  -H 'authorization: ${TOKEN}' \
+  http://${controller_ip}:51121/api/v3/flow \
+  -H 'cache-control: no-cache' \
+  -H 'authorization:' ${TOKEN} \
   -H 'cache-control: no-cache' \
   -H 'content-type: application/json' \
-  -H 'postman-token: 27a84411-e4d7-cf3b-7d21-4b0a2edb385d')
+  -H 'postman-token: 42dc323d-6b73-5d43-577c-2c02028e35d2')
+
+echo $FLOW
 
 add

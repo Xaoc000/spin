@@ -23,4 +23,4 @@ spec:
       ports:
         - internal: 80
           external: 12672
-  replicas: 2
+  replicas: 1
