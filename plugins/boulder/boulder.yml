@@ -14,9 +14,9 @@ spec:
         - hostDestination: "/lib/"
           containerDestination: "/lib/"
           accessMode: "rw"
+      host-access: true
       routes:
         - "@1"
-      host-access: true
     - name: "webDisplayBoulder"
       catalog-item-id: 102
       host-access: false
