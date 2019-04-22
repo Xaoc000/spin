@@ -6,7 +6,7 @@ metadata:
 spec:
   microservices:
     - name: "boulderai"
-      catalog-item-id: 101
+      catalog-item-id: 102
       volume-mappings:
         - hostDestination: "/usr/"
           containerDestination: "/usr/"
@@ -18,7 +18,7 @@ spec:
       routes:
         - "@1"
     - name: "webdisplay"
-      catalog-item-id: 102
+      catalog-item-id: 103
       host-access: false
       ports:
         - internal: 80
