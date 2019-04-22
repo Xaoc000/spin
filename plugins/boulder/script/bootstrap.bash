@@ -8,7 +8,7 @@ ANSIBLE=iofog/ansible/scripts
 function add() {
     curl -X POST \
       http://${controller_ip}:51121/api/v3/catalog/microservices \
-      -H 'Authorization': ${TOKEN} \
+      -H 'Authorization: ${TOKEN}' \
       -H 'Content-Type: application/json' \
       -d '{
       "name": "iofog-video",
@@ -28,7 +28,7 @@ function add() {
 
     curl -X POST \
       http://${controller_ip}:51121/api/v3/catalog/microservices \
-      -H 'Authorization': ${TOKEN} \
+      -H 'Authorization: ${TOKEN}' \
       -H 'Content-Type: application/json' \
       -d '{
       "name": "iofog-web",
@@ -69,14 +69,6 @@ AUTH_RESULT=$(curl -X POST \
 echo $AUTH_RESULT
 
 TOKEN=$(echo $AUTH_RESULT | jq -r .accessToken)
-
-FLOW=$(curl -X GET \
-  http://${controller_ip}:51121/api/v3/flow \
-  -H 'cache-control: no-cache' \
-  -H 'authorization:' ${TOKEN} \
-  -H 'cache-control: no-cache' \
-  -H 'content-type: application/json' \
-  -H 'postman-token: 42dc323d-6b73-5d43-577c-2c02028e35d2')
 
 echo $FLOW
 
