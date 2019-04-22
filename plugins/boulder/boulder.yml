@@ -9,10 +9,10 @@ spec:
       catalog-item-id: 101
       volume-mappings:
         - hostDestination: "/usr/"
-          containerDestination: "/usr"
+          containerDestination: "/usr/"
           accessMode: "rw"
         - hostDestination: "/lib/"
-          containerDestination: "/lib"
+          containerDestination: "/lib/"
           accessMode: "rw"
       routes:
         - "@1"

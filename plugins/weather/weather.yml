@@ -1,7 +1,7 @@
 apiVersion: k8s.iofog.org/v1alpha1
 kind: IOFog
 metadata:
-  name: boulder-ai-demo
+  name: weather-demo
   namespace: iofog
 spec:
   microservices:
