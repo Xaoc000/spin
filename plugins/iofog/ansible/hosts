@@ -2,7 +2,7 @@
 ansible_connection=ssh
 ansible_ssh_private_key_file=conf/id_ecdsa
 ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
-controller_ip=35.244.98.148
+controller_ip=35.244.81.57
 
 [iofog-agent]
 nvidia@192.168.1.69

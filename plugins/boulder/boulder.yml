@@ -7,10 +7,20 @@ spec:
   microservices:
     - name: "boulderAI"
       catalog-item-id: 101
-      volumes: /usr/:/usr/ /lib:/lib
+      volume-mappings:
+        - hostDestination: "/usr/"
+          containerDestination: "/usr"
+          accessMode: "rw"
+        - hostDestination: "/lib/"
+          containerDestination: "/lib"
+          accessMode: "rw"
+      routes:
+        - "@1"
       host-access: true
     - name: "webDisplayBoulder"
       catalog-item-id: 102
-      volumes:
       host-access: false
+      ports:
+        - internal: 80
+          external: 12672
   replicas: 2

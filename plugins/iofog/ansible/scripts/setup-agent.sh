@@ -43,7 +43,7 @@ function provision() {
         --header "Authorization: $token" \
         --header 'Content-Type: application/json')
     echo "$provisioning"
-    key=$(echo $provisioning | jq -r .ke)
+    key=$(echo $provisioning | jq -r .key)
 
     iofog-agent provision $key
 }
@@ -53,6 +53,10 @@ function provision() {
 #wait "curl --request GET --url $CONTROLLER_HOST/status" "Failed"
 
 # These are our setup steps
+echo "Starting Script\n"
 login
+echo "Login'd\n"
 create-node
+echo "Creating Node\n"
 provision
+echo "Provisioning\n"
