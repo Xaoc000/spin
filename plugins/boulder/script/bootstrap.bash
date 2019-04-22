@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+"$SCRIPT"/wait-for-pods.bash kube-system iofog
+
 SCRIPT=plugins/iofog/script
 ANSIBLE=iofog/ansible/scripts
 
@@ -46,7 +48,6 @@ function add() {
 }
 
 controller_ip=$("$SCRIPT"/wait-for-lb.bash iofog controller)
-"$SCRIPT"/wait-for-pods.bash kube-system
 
 # Get Auth Token
 #AUTH_RESULT=$(curl --request POST \

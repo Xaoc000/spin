@@ -5,7 +5,7 @@ metadata:
   namespace: iofog
 spec:
   microservices:
-    - name: "boulderAI"
+    - name: "boulderai"
       catalog-item-id: 101
       volume-mappings:
         - hostDestination: "/usr/"
@@ -17,7 +17,7 @@ spec:
       host-access: true
       routes:
         - "@1"
-    - name: "webDisplayBoulder"
+    - name: "webdisplay"
       catalog-item-id: 102
       host-access: false
       ports:
