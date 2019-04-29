@@ -23,6 +23,7 @@ def up(**kwargs):
     # Default args
     args = {}
     args['bootstrap'] = False
+    args['update'] = False
 
     # Parse input args
     for key, val in kwargs.items():
@@ -30,6 +31,8 @@ def up(**kwargs):
 
     if args['bootstrap']:
         cmd('./plugins/boulder/script/bootstrap.bash')
+    if args['update']:
+        cmd('./plugins/boulder/script/update.bash')
 
     cmd('kubectl apply -f plugins/boulder/boulder.yml')
 
